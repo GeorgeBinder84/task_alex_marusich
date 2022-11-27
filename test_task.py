@@ -66,4 +66,6 @@ def test_get_info_hrefs():
     assert task.get_https_methods(args_control) == result_control
     assert os.path.exists('task.json')
     print("time taken:", stop - start)
-#18.10932699299883
+# time 18.10932699299883
+# time taken: 16.371288262016606
+# time taken: 16.526229026028886

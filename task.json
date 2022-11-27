@@ -1,1 +1,1 @@
-{"https://google.com": {"GET": 200, "HEAD": 301}, "https://www.facebook.com": {"GET": 200, "POST": 200, "PUT": 200, "HEAD": 200, "DELETE": 200, "PATCH": 200, "OPTIONS": 200}}
+{"https://www.facebook.com": {"GET": 200, "POST": 200, "PUT": 200, "HEAD": 200, "DELETE": 200, "PATCH": 200, "OPTIONS": 200}, "https://google.com": {"GET": 200, "HEAD": 301}}
