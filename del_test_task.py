@@ -25,7 +25,7 @@ def test_get_info_hrefs():
     except:
         pass
     assert task.get_https_methods(args_control2)
-    assert os.path.exists('task.json')
+
 
     stop = perf_counter()
     print("time taken:", stop - start)
@@ -35,14 +35,14 @@ def test_get_info_hrefs():
     except:
         pass
     assert task.get_https_methods('hello') == {}
-    assert os.path.exists('task.json')
+
 
     try:
         os.remove('task.json')
     except:
         pass
     assert task.get_https_methods(None) == {}
-    assert os.path.exists('task.json')
+
 
     args_control = {    "1",
                         "https://google.com",
