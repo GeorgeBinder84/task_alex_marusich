@@ -20,6 +20,13 @@ def get_https_method(request):
     yield request.param
 
 
+def info_speed(fanc):
+    def wrapper():
+        start = perf_counter()
+        fanc()
+        stop = perf_counter()
+        print("!!!!!!!!!!!!!!!! time taken:", stop - start)
+    return wrapper
 
 @pytest.fixture
 def preparation_and_cleanring():
@@ -27,15 +34,19 @@ def preparation_and_cleanring():
         os.remove('task.json')
     except:
         pass
-    start = perf_counter()
     yield
-    stop = perf_counter()
-    print("time taken:", stop - start)
     assert os.path.exists('task.json')
-
+@pytest.fixture
+def get_set_urls():
+    all_urls = list(dict_url_for_validate.keys())
+    return all_urls
 
 from src.enums.task_enums import dict_url_for_validate
-@pytest.fixture(scope="module", params=dict_url_for_validate.items())
+@pytest.fixture(scope="module", params=dict_url_for_validate.keys())
 def get_urlstring_for_validate(request):
-    yield {'url': request.param[0], 'validate': request.param[1]}
+    yield request.param
+
+@pytest.fixture(scope="module", params=dict_url_for_validate.keys())
+def get_urlstring_for_validate(request):
+    yield request.param
 

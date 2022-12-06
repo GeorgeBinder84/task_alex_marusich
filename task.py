@@ -2,6 +2,7 @@ import json
 import aiohttp
 import re
 import asyncio
+import copy
 
 METHODS = ['GET', 'POST', 'PUT', 'HEAD', 'DELETE', 'PATCH', 'OPTIONS', 'CONNECT', 'TRACE']
 URL_REGEX = re.compile(r'^(?:http(s)?:\/\/)\S+')
@@ -9,7 +10,7 @@ async def _get_response_status(obj_session, str_url, str_https_method):
     try:
         async with getattr(obj_session, str_https_method.lower())(str_url) as response:
             return {'url': str_url, 'https_method': str_https_method, 'response_status': response.status}
-    except (aiohttp.ClientResponseError, AttributeError):
+    except (AttributeError, aiohttp.ClientResponseError, aiohttp.ClientConnectorError):
         return {'url': str_url, 'https_method': str_https_method, 'response_status': 405}
 
 
@@ -47,8 +48,10 @@ def _create_structure(array_urls):
 
 
 def _clean_structure(array_urls):
-    for url in array_urls:
+    for url in array_urls.copy():
         for method in METHODS:
+            if not array_urls[url]:
+                array_urls.pop(url)
             if array_urls[url][method] == 405:
                 del array_urls[url][method]
         if array_urls[url] == {}:
