@@ -4,9 +4,7 @@ import re
 import asyncio
 
 METHODS = ['GET', 'POST', 'PUT', 'HEAD', 'DELETE', 'PATCH', 'OPTIONS', 'CONNECT', 'TRACE']
-URL_REGEX = re.compile(r"^(?:http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$")
-
-
+URL_REGEX = re.compile(r'^(?:http(s)?:\/\/)\S+')
 async def _get_response_status(obj_session, str_url, str_https_method):
     try:
         async with getattr(obj_session, str_https_method.lower())(str_url) as response:
@@ -25,9 +23,9 @@ def _check_is_url(str_url):
 
 def _create_arg_set(arr):
     if hasattr(arr, '__iter__') and type(arr) != str:
-        arr = set(arr)
+        arr = set(map(str,arr))
     else:
-        arr = {arr, }
+        arr = {str(arr)}
     return arr
 
 
