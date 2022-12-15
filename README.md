@@ -1,21 +1,21 @@
-# task_alex_marusich
-Тестовое задание от Алексея Марусича.
-Времени затрачено 4 дня, но первоначальное решене было сделано за 2 часа. Большая часть времени потрачена на requests, poetry, deploy, pytest, coverage
+# task_alex_marusic
+A test task from Alexey Marusich.
+It took 4 days, but the initial decision was made in 2 hours. Most of the time is spent on requests, poetry, deploy, pytest, coverage
 
-## Приложение
+## Application 
 
-CLI приложение, которое:
+A CLI application that:
 
-1) Получает на вход произвольное множество строк.
-2) Итерируется по этим строкам и определяет, является ли эта строка ссылкой или нет.
-3) Если эта строка не ссылка, выводится уведомление: Строка "X" не является ссылкой.
-4) Если является ссылкой, то
-	1) Приложение должно определить какие методы доступны по этой ссылки
-		1) Проверяются все http методы.
-		2) Доступным считается метод, обработка которого завершилась не 405 ошибкой.
-	3) Передаваемые данные и ошибки от сервера не важны.
-	4) Выполнив запрос приложение сохраняет код ответа.
-6) Результатом работы приложением будет словарь, состоящий из ссылок и информации о доступных метода.
+1) Receives an arbitrary set of strings as input.
+2) Iterates over these lines and determines whether this line is a reference or not.
+3) If this string is not a link, a notification is displayed: The string "X" is not a link.
+4) If it is a reference, then
+1) The application should determine which methods are available by this link
+1) All http methods are checked.
+2) A method whose processing failed with a non-405 error is considered available.
+3) The transmitted data and errors from the server are not important.
+4) After completing the request, the application saves the response code.
+6) The result of the application will be a dictionary consisting of links and information about available methods.
 
 
 
