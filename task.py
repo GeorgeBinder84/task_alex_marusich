@@ -85,3 +85,14 @@ def get_https_methods(urls):
     results = _clean_structure(results)
     _create_and_write_to_file(results)
     return results
+
+if __name__ == "__main__":
+    test_str = [    '1',
+                    'www.linkedin.com',
+                    'https://www.linkedin.com',
+                    'www.linkedin.com/in/george-binder',
+                    'https://www.google.com',
+                    'https://www.linkedin.com/in/george-binder/',
+                    'https://pythonexamples.org/'] #, 'хрень']
+
+    print(get_https_methods(test_str))
