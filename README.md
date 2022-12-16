@@ -1,4 +1,4 @@
-# task_alex_marusic
+# task.py task_alex_marusic 
 A test task from Alexey Marusich.
 It took 4 days, but the initial decision was made in 2 hours. Most of the time is spent on requests, poetry, deploy, pytest, coverage
 
